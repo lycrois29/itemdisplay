@@ -2,33 +2,38 @@
 <html>
   <head>
     <title>Item Display</title>
-    <script src="public/js/item-list.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="itemlist.js" defer></script>
   </head>
+
   <body>
     <div class="main-container">
-      <div>
-        <h2>Item Display</h2>
-      </div>
-      <div>
-        <select name="item-list" id="item-list" class="select"></select>
-      </div>
+      <h2>Item Display</h2>
+
+      <select name="item-list" id="item-list" class="select"></select>
+
       <hr />
+
       <div class="prop-row">
         <div class="prop-name">ID</div>
         <div id="item-id"></div>
       </div>
+
       <div class="prop-row">
         <div class="prop-name">Name</div>
         <div id="item-name"></div>
       </div>
+
       <div class="prop-row">
         <div class="prop-name">Category</div>
         <div id="item-category"></div>
       </div>
+
       <div class="prop-row">
         <div class="prop-name">Inventory Amt.</div>
         <div id="item-inventory"></div>
       </div>
+
       <div class="prop-row">
         <div class="prop-name">List price</div>
         <div id="item-price"></div>

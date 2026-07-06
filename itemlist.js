@@ -1,4 +1,3 @@
-// Your provided items array
 const items = [
   { id: 1, name: "Mouse", category: "IT", inventory: 200, price: 240 },
   { id: 2, name: "Keyboard", category: "IT", inventory: 150, price: 490 },
@@ -12,58 +11,55 @@ const items = [
   { id: 10, name: "Phone Stand", category: "IT", inventory: 180, price: 160 },
   { id: 11, name: "Headphones", category: "IT", inventory: 130, price: 1450 }
 ];
- 
-// DOM Elements from your HTML
-const itemSelect = document.getElementById("item-select");
+
+const itemSelect = document.getElementById("item-list");
 const itemId = document.getElementById("item-id");
 const itemName = document.getElementById("item-name");
 const itemCategory = document.getElementById("item-category");
 const itemInventory = document.getElementById("item-inventory");
 const itemPrice = document.getElementById("item-price");
- 
-// Populate the dropdown select element
+
 function populateDropdown() {
-    items.forEach(item => {
-        const option = document.createElement("option");
-        option.value = item.id;
-        option.textContent = item.name;
-        itemSelect.appendChild(option);
-    });
+  const emptyOption = document.createElement("option");
+  emptyOption.value = "";
+  emptyOption.textContent = "";
+  itemSelect.appendChild(emptyOption);
+
+  items.forEach(item => {
+    const option = document.createElement("option");
+    option.value = item.id;
+    option.textContent = item.name;
+    itemSelect.appendChild(option);
+  });
 }
- 
-// Clear all data fields when no item or empty option is selected
+
 function clearDisplay() {
-    itemId.textContent = "";
-    itemName.textContent = "";
-    itemCategory.textContent = "";
-    itemInventory.textContent = "";
-    itemPrice.textContent = "";
+  itemId.textContent = "";
+  itemName.textContent = "";
+  itemCategory.textContent = "";
+  itemInventory.textContent = "";
+  itemPrice.textContent = "";
 }
- 
-// Display selected item detail
+
 function displayItem(id) {
-    const selectedItem = items.find(item => item.id === parseInt(id));
-    
-    if (selectedItem) {
-        itemId.textContent = selectedItem.id;
-        itemName.textContent = selectedItem.name;
-        itemCategory.textContent = selectedItem.category;
-        itemInventory.textContent = selectedItem.inventory;
-        itemPrice.textContent = selectedItem.price;
-    }
+  const selectedItem = items.find(item => item.id === Number(id));
+
+  if (selectedItem) {
+    itemId.textContent = selectedItem.id;
+    itemName.textContent = selectedItem.name;
+    itemCategory.textContent = selectedItem.category;
+    itemInventory.textContent = selectedItem.inventory;
+    itemPrice.textContent = selectedItem.price;
+  }
 }
- 
-// Event Listener for selection changes
-itemSelect.addEventListener("change", (e) => {
-    const selectedValue = e.target.value;
-    
-    if (selectedValue === "") {
-        clearDisplay();
-    } else {
-        displayItem(selectedValue);
-    }
+
+itemSelect.addEventListener("change", function () {
+  if (itemSelect.value === "") {
+    clearDisplay();
+  } else {
+    displayItem(itemSelect.value);
+  }
 });
- 
-// Initialize the page on load
+
 populateDropdown();
-clearDisplay(); // Sets initial state to select nothing
+clearDisplay();
